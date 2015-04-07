@@ -1,7 +1,7 @@
 <?php
 	$username = "root";
 	$password = "";
-	$database = "team3";
+	$database = "sample";
 	$address = "localhost";
 	
 	 // Create connection
@@ -32,7 +32,8 @@
 
     $mysqlConnection->close();
 	
-	$jsonResponseAllCustomers = http_get("http://localhost/sample_api/customers", array("timeout"=>1), $info);	//	Need PCL for this
+	//$jsonResponseAllCustomers = http_get("http://localhost/sample_api/customers", array("timeout"=>1), $info);	//	Need PCL for this
+	$jsonResponseAllCustomers = file_get_contents("http://localhost/sample_api/customers");
 	$array = json_decode($jsonResponseAllCustomers);
 ?>
 
@@ -67,7 +68,7 @@
 
 						<?php foreach ($array as $customer) { ?>
 							<div class="job">
-								<h4><li><?php echo $customer['name'] ?> (<a href="http://localhost/sample_gui/customers.php?customer_id=<?php echo $customer['id']; ?>&remove_customer=1">remove customer</a>)</li></h4>																
+								<h4><li><?php echo $customer->name ?><a href="http://localhost/sample_gui/customers.php?customer_id=<?php echo $customer['id']; ?>&remove_customer=1">remove customer</a></li></h4>																
 							</div>
 						<?php } ?>
 
