@@ -32,7 +32,8 @@
 
     $mysqlConnection->close();
 	
-	$jsonResponseAllEmployees = http_get("http://localhost/sample_api/employees", array("timeout"=>1), $info);	//	Need PCL for this
+	//$jsonResponseAllEmployees = http_get("http://localhost/sample_api/employees", array("timeout"=>1), $info);	//	Need PCL for this
+	$jsonResponseAllCustomers = file_get_contents("http://localhost/sample_api/employees");
 	$array = json_decode($jsonResponseAllEmployees);
 ?>
 
